@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-facade-xml type="seed">
+
+
+    <party.Party partyId="P1" partyTypeEnumId="PERSON" createdDate="2024-01-01"/>
+    <party.Person partyId="P2" firstName="Adarsh" lastName="Goyal"/>
+
+    <party.Party partyId="G1" partyTypeEnumId="PARTY_GROUP" createdDate="2024-01-01"/>
+    <party.PartyGroup partyId="G1" groupName="Hotwax"/>
+
+
+    <party.ContactMech contactMechId="CM100" contactMechTypeEnumId="EMAIL" infoString="john.doe@example.com"/>
+    <party.ContactMech contactMechId="CM200" contactMechTypeEnumId="TELECOM_NUMBER" infoString="+91-9999999999"/>
+
+
+    <party.PartyContactMech partyId="P100" contactMechId="CM100" createdDate="2024-01-01"/>
+    <party.PartyContactMech partyId="P100" contactMechId="CM200" createdDate="2024-01-01"/>
+
+</entity-facade-xml>

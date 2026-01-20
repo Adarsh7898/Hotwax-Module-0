@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.1.xsd">
+
+
+
+    <transition name="createTutorial">
+<!--        <service-call name="create#tutorial.Tutorial"/>-->
+        <service-call name="tutorial.TutorialServices.create#Tutorial"/>
+        <default-response url="."/>
+    </transition>
+
+    <transition name="deleteTutorial">
+<!--        <service-call name="create#tutorial.Tutorial"/>-->
+        <service-call name="delete#Tutorial"/>
+        <default-response url="."/>
+    </transition>
+    <transition name="updateTutorial">
+<!--        <service-call name="create#tutorial.Tutorial"/>-->
+        <service-call name="update#Tutorial"/>
+        <default-response url="."/>
+    </transition>
+
+
+    <actions>
+        <entity-find entity-name="tutorial.Tutorial" list="tutorialList">
+            <search-form-inputs/></entity-find>
+    </actions>
+
+
+    <widgets>
+<!--        <form-list name="ListTutorials" list="tutorialList" header-dialog="true" skip-form="true">-->
+<!--            <auto-fields-entity entity-name="tutorial.Tutorial" field-type="find-display"/>-->
+<!--            -->
+<!--        </form-list>-->
+<!--        -->
+
+        <container-dialog id="CreateTutorialDialog" button-text="Create Tutorial">
+            <form-single name="CreateTutorial" transition="createTutorial">
+                <auto-fields-entity entity-name="tutorial.Tutorial" field-type="edit"/>
+                <field name="submitButton"><default-field title="Create"><submit/></default-field></field>
+            </form-single>
+        </container-dialog>
+
+        <container-dialog id="UpdateTutorialDialog" button-text="Update Tutorial">
+            <form-single name="UpdateTutorial" transition="updateTutorial">
+                <auto-fields-entity entity-name="tutorial.Tutorial" field-type="edit"/>
+                <field name="updateButton"><default-field title="Update"><submit/></default-field></field>
+            </form-single>
+    </container-dialog>        <container-dialog id="DeleteTutorialDialog" button-text="Delete Tutorial">
+
+
+            <form-single name="DeleteTutorial" transition="deleteTutorial">
+<!--                <auto-fields-entity entity-name="tutorial.Tutorial" field-type="edit"/>-->
+                <field name="tutorialId">
+                    <default-field><text-area/></default-field>
+                </field>
+                <field name="deleteButton"><default-field title="Delete"><submit/></default-field></field>
+            </form-single>
+        </container-dialog>
+
+        <form-list name="ListTutorials" list="tutorialList" header-dialog="true" skip-form="true">
+            <auto-fields-entity entity-name="tutorial.Tutorial" field-type="find-display"/>
+            <field name="tutorialId">
+                <header-field show-order-by="true"><text-find hide-options="true"/></header-field>
+                <default-field><display/></default-field>
+            </field><field name="description">
+                <header-field show-order-by="true"><text-find hide-options="true"/></header-field>
+                <default-field><display/></default-field>
+            </field>
+        </form-list>
+    </widgets>
+</screen>
